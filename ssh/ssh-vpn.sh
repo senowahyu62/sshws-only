@@ -374,14 +374,14 @@ netfilter-persistent reload
 # download script
 cd /usr/bin
 wget -O addhost "https://${akbarvpn}/addhost.sh"
-wget -O about "https://${akbarvpn}/about.sh"
+wget -O certws "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/certws.sh"
 wget -O addssh "https://${akbarvpn}/addssh.sh"
 wget -O trialssh "https://${akbarvpn}/trialssh.sh"
 wget -O delssh "https://${akbarvpn}/delssh.sh"
 wget -O member "https://${akbarvpn}/member.sh"
 wget -O delexp "https://${akbarvpn}/delexp.sh"
 wget -O cekssh "https://${akbarvpn}/cekssh.sh"
-wget -O restart "https://${akbarvpn}/restart.sh"
+wget -O restart "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/restart.sh"
 wget -O info "https://${akbarvpn}/info.sh"
 wget -O ram "https://${akbarvpn}/ram.sh"
 wget -O renewssh "https://${akbarvpn}/renewssh.sh"
@@ -458,8 +458,9 @@ chmod +x addtrgo
 chmod +x deltrgo
 chmod +x renewtrgo
 chmod +x cektrgo
-echo "0 5 * * * root clearlog && reboot" >> /etc/crontab
+echo "0 2 * * * reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
+echo "0 0 * * * root certws" >> /etc/crontab
 # remove unnecessary files
 cd
 apt autoclean -y
