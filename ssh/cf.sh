@@ -74,13 +74,3 @@ RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_r
      --data '{"type":"A","name":"'${WILD_DOMAIN}'","content":"'${IP}'","ttl":120,"proxied":false}')
 echo "Host : $SUB_DOMAIN"
 echo $SUB_DOMAIN > /var/lib/datavpn/domain
-domain=$(cat /var/lib/datavpn/domain)
-sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
-cd /root/
-wget -O acme.sh https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh
-bash acme.sh --install
-rm acme.sh
-cd .acme.sh
-bash acme.sh --register-account -m senowahyu62@gmail.com
-bash acme.sh --issue --standalone -d $domain --force
-bash acme.sh --installcert -d $domain --fullchainpath /var/lib/datavpn/ssl-tls.crt --keypath /var/lib/datavpn/ssl-tls.key
