@@ -21,6 +21,9 @@ if [ -f "/var/lib/datavpn/domain" ]; then
 echo "Script Already Installed"
 exit 0
 fi
+sudo apt-get install curl
+curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash
+sudo apt-get install speedtest -y
 mkdir /var/lib/datavpn;
 echo "IP=" >> /var/lib/datavpn/ipvps.conf
 wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
