@@ -33,4 +33,24 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 1000
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 1000
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000
 clear
-echo -e "Restart All Service Berhasil"
+printf 'CHECKING LISTENING PORT\n'
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 8181)" ]
+then
+	echo 'SSH OHP Redirection Running'
+else
+	echo 'SSH OHP Redirection Not Found, please check manually'
+fi
+sleep 0.5
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 8282)" ]
+then
+	echo 'Dropbear OHP Redirection Running'
+else
+	echo 'Dropbear OHP Redirection Not Found, please check manually'
+fi
+sleep 0.5
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 8383)" ]
+then
+	echo 'OpenVPN OHP Redirection Running'
+else
+	echo 'OpenVPN OHP Redirection Not Found, please check manually'
+fi
