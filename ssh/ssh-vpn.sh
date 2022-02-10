@@ -373,9 +373,9 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O addhost "https://${akbarvpn}/addhost.sh"
+wget -O addhost "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/addhost.sh"
 wget -O certws "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/certws.sh"
-wget -O addssh "https://${akbarvpn}/addssh.sh"
+wget -O addssh "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/addssh.sh"
 wget -O trialssh "https://${akbarvpn}/trialssh.sh"
 wget -O delssh "https://${akbarvpn}/delssh.sh"
 wget -O member "https://${akbarvpn}/member.sh"
