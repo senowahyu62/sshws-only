@@ -395,7 +395,7 @@ wget -O certv2ray "https://${akbarvpnn}/certv2ray.sh"
 wget -O portsshnontls "https://raw.githubusercontent.com/senowahyu62/scriptvps/main/websocket/portsshnontls.sh"
 wget -O portsshws "https://raw.githubusercontent.com/senowahyu62/scriptvps/main/websocket/portsshws.sh"
 
-wget -O menu "https://raw.githubusercontent.com/senowahyu62/scriptvps/main/update/sshovpn.sh"
+wget -O menu "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/menu.sh"
 
 chmod +x portsshnontls
 chmod +x portsshws
