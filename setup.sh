@@ -27,6 +27,8 @@ sudo apt-get install speedtest -y
 mkdir /var/lib/datavpn;
 echo "IP=" >> /var/lib/datavpn/ipvps.conf
 wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+#install v2ray
+wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/xray/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
 #install ssh ovpn
 wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 #set br
