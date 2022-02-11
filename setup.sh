@@ -17,32 +17,67 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
-if [ -f "/var/lib/datavpn/domain" ]; then
+# ==========================================
+# Link Hosting Kalian Untuk Ssh Vpn
+akbarvpn="raw.githubusercontent.com/senowahyu62/scriptvps/main/ssh"
+# Link Hosting Kalian Untuk Sstp
+akbarvpnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/sstp"
+# Link Hosting Kalian Untuk Ssr
+akbarvpnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/ssr"
+# Link Hosting Kalian Untuk Shadowsocks
+akbarvpnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/shadowsocks"
+# Link Hosting Kalian Untuk Wireguard
+akbarvpnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/wireguard"
+# Link Hosting Kalian Untuk Xray
+akbarvpnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/xray"
+# Link Hosting Kalian Untuk Ipsec
+akbarvpnnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/ipsec"
+# Link Hosting Kalian Untuk Backup
+akbarvpnnnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/backup"
+# Link Hosting Kalian Untuk Websocket
+akbarvpnnnnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/websocket"
+# Link Hosting Kalian Untuk Ohp
+akbarvpnnnnnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/ohp"
+
+# Getting
+MYIP=$(wget -qO- ipinfo.io/ip);
+echo "Checking VPS"
+IZIN=$(wget -qO- ipinfo.io/ip);
+
+rm -f setup.sh
+clear
+if [ -f "/etc/xray/domain" ]; then
 echo "Script Already Installed"
 exit 0
 fi
-sudo apt-get install curl
-curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash
-sudo apt-get install speedtest -y
-mkdir /var/lib/datavpn;
-echo "IP=" >> /var/lib/datavpn/ipvps.conf
-wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+mkdir /var/lib/akbarstorevpn;
+echo "IP=" >> /var/lib/akbarstorevpn/ipvps.conf
+wget https://${akbarvpn}/cf.sh && chmod +x cf.sh && ./cf.sh
 #install v2ray
-wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/xray/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
+wget https://${akbarvpnnnnnn}/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
 #install ssh ovpn
-wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-#set br
-https://raw.githubusercontent.com/senowahyu62/scriptvps/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://${akbarvpn}/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 # Websocket
-wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/edu.sh && chmod +x edu.sh && ./edu.sh
+wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
 # Ohp Server
-wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://${akbarvpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 
 rm -f /root/ssh-vpn.sh
+rm -f /root/sstp.sh
+rm -f /root/wg.sh
+rm -f /root/ss.sh
+rm -f /root/ssr.sh
+rm -f /root/ins-xray.sh
+rm -f /root/ipsec.sh
 rm -f /root/set-br.sh
 rm -f /root/edu.sh
 rm -f /root/ohp.sh
 
+systemctl daemon-reload
+systemctl enable autosett
+wget -O /etc/set.sh "https://${akbarvpn}/set.sh"
+chmod +x /etc/set.sh
 history -c
 echo "1.2" > /home/ver
 echo " "
@@ -59,8 +94,20 @@ echo "   - Dropbear                : 443, 109, 143"  | tee -a log-install.txt
 echo "   - Squid Proxy             : 3128, 8080"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - Nginx                   : 89"  | tee -a log-install.txt
+echo "   - Wireguard               : 7070"  | tee -a log-install.txt
+echo "   - L2TP/IPSEC VPN          : 1701"  | tee -a log-install.txt
+echo "   - PPTP VPN                : 1732"  | tee -a log-install.txt
+echo "   - SSTP VPN                : 444"  | tee -a log-install.txt
+echo "   - Shadowsocks-R           : 1443-1543"  | tee -a log-install.txt
+echo "   - SS-OBFS TLS             : 2443-2543"  | tee -a log-install.txt
+echo "   - SS-OBFS HTTP            : 3443-3543"  | tee -a log-install.txt
+echo "   - XRAYS Vmess TLS         : 8443"  | tee -a log-install.txt
+echo "   - XRAYS Vmess None TLS    : 80"  | tee -a log-install.txt
+echo "   - XRAYS Vless TLS         : 8443"  | tee -a log-install.txt
+echo "   - XRAYS Vless None TLS    : 80"  | tee -a log-install.txt
+echo "   - XRAYS Trojan            : 2083"  | tee -a log-install.txt
 echo "   - Websocket TLS           : 443"  | tee -a log-install.txt
-echo "   - Websocket None TLS      : 80"  | tee -a log-install.txt
+echo "   - Websocket None TLS      : 8880"  | tee -a log-install.txt
 echo "   - Websocket Ovpn          : 2086"  | tee -a log-install.txt
 echo "   - OHP SSH                 : 8181"  | tee -a log-install.txt
 echo "   - OHP Dropbear            : 8282"  | tee -a log-install.txt
