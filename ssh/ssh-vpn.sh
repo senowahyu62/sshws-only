@@ -386,7 +386,7 @@ netfilter-persistent reload
 # download script
 cd /usr/bin
 wget -O addhost "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/addhost.sh"
-wget -O certws "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/certws.sh"
+wget -O certws "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/cerws.sh"
 wget -O addssh "https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/addssh.sh"
 wget -O trialssh "https://${akbarvpn}/trialssh.sh"
 wget -O delssh "https://${akbarvpn}/delssh.sh"
@@ -416,7 +416,7 @@ chmod +x sshovpnmenu
 chmod +x l2tpmenu
 chmod +x pptpmenu
 chmod +x sstpmenu
-chmod +x wgmenu
+chmod +x certws
 chmod +x ssmenu
 chmod +x ssrmenu
 chmod +x vmessmenu
