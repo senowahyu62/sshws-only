@@ -58,10 +58,12 @@ wget https://${akbarvpnnnnnn}/ins-xray.sh && chmod +x ins-xray.sh && screen -S x
 #install ssh ovpn
 wget https://${akbarvpn}/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+
 # Websocket
-wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/edu.sh && chmod +x edu.sh && ./edu.sh
 # Ohp Server
-wget https://${akbarvpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+
 
 rm -f /root/ssh-vpn.sh
 rm -f /root/sstp.sh
@@ -74,10 +76,6 @@ rm -f /root/set-br.sh
 rm -f /root/edu.sh
 rm -f /root/ohp.sh
 
-systemctl daemon-reload
-systemctl enable autosett
-wget -O /etc/set.sh "https://${akbarvpn}/set.sh"
-chmod +x /etc/set.sh
 history -c
 echo "1.2" > /home/ver
 echo " "
@@ -94,20 +92,8 @@ echo "   - Dropbear                : 443, 109, 143"  | tee -a log-install.txt
 echo "   - Squid Proxy             : 3128, 8080"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - Nginx                   : 89"  | tee -a log-install.txt
-echo "   - Wireguard               : 7070"  | tee -a log-install.txt
-echo "   - L2TP/IPSEC VPN          : 1701"  | tee -a log-install.txt
-echo "   - PPTP VPN                : 1732"  | tee -a log-install.txt
-echo "   - SSTP VPN                : 444"  | tee -a log-install.txt
-echo "   - Shadowsocks-R           : 1443-1543"  | tee -a log-install.txt
-echo "   - SS-OBFS TLS             : 2443-2543"  | tee -a log-install.txt
-echo "   - SS-OBFS HTTP            : 3443-3543"  | tee -a log-install.txt
-echo "   - XRAYS Vmess TLS         : 8443"  | tee -a log-install.txt
-echo "   - XRAYS Vmess None TLS    : 80"  | tee -a log-install.txt
-echo "   - XRAYS Vless TLS         : 8443"  | tee -a log-install.txt
-echo "   - XRAYS Vless None TLS    : 80"  | tee -a log-install.txt
-echo "   - XRAYS Trojan            : 2083"  | tee -a log-install.txt
 echo "   - Websocket TLS           : 443"  | tee -a log-install.txt
-echo "   - Websocket None TLS      : 8880"  | tee -a log-install.txt
+echo "   - Websocket None TLS      : 80"  | tee -a log-install.txt
 echo "   - Websocket Ovpn          : 2086"  | tee -a log-install.txt
 echo "   - OHP SSH                 : 8181"  | tee -a log-install.txt
 echo "   - OHP Dropbear            : 8282"  | tee -a log-install.txt
