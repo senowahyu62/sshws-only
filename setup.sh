@@ -43,10 +43,10 @@ rm -f setup.sh
 clear
 mkdir /var/lib/datavpn
 chmod 777 /var/lib/datavpn
-https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
 
 #install ssh ovpn
-https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ssh-vpn.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 # Websocket
