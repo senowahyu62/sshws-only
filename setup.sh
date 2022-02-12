@@ -48,12 +48,12 @@ wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/cf.sh && 
 #install ssh ovpn
 wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
-
 # Websocket
-wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/edu.sh && chmod +x edu.sh && ./edu.sh
+wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
 # Ohp Server
-wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ohp.sh && chmod +x ohp.sh && ./ohp.sh
-rm --f /root/*
+wget https://${akbarvpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+
+rm -f /root/*
 rm -f /root/cf.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/set-br.sh
