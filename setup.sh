@@ -74,6 +74,7 @@ rm -f /root/edu.sh
 rm -f /root/ohp.sh
 history -c
 echo "1.2" > /home/ver
+cd
 echo " "
 echo "Installation has been completed!!"echo " "
 echo "============================================================================" | tee -a log-install.txt
