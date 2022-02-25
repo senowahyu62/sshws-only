@@ -49,16 +49,18 @@ exit 0
 fi
 mkdir /etc/xray
 mkdir -p /etc/xray
-wget https://${akbarvpn}/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
 #install v2ray
-wget https://${akbarvpnnnnnn}/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
 #install ssh ovpn
-wget https://${akbarvpn}/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 # Websocket
 wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
 # Ohp Server
 wget https://${akbarvpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+
+wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+
 
 rm -f /root/ssh-vpn.sh
 rm -f /root/sstp.sh
