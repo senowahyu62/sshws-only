@@ -41,7 +41,8 @@ wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ohp.sh && chm
 
 wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
-
+rm -f /ins-xray.sh
+rm -f /cf.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/set-br.sh
 rm -f /root/edu.sh
