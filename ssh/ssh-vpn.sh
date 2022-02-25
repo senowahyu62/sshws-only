@@ -11,18 +11,6 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Getting
-
-domain=$(cat /var/lib/datavpn/domain)
-sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
-cd /root/
-wget -O acme.sh https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh
-bash acme.sh --install
-rm acme.sh
-cd .acme.sh
-bash acme.sh --register-account -m senowahyu62@gmail.com
-bash acme.sh --issue --standalone -d $domain --force
-bash acme.sh --installcert -d $domain --fullchainpath /var/lib/datavpn/ssl-tls.crt --keypath /var/lib/datavpn/ssl-tls.key
-
 MYIP=$(wget -qO- ipinfo.io/ip);
 # ==================================================
 # Link Hosting Kalian
@@ -44,6 +32,15 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 NET=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 source /etc/os-release
 ver=$VERSION_ID
+
+#detail nama perusahaan
+country=ID
+state=Indonesia
+locality=Indonesia
+organization=akbarstorevpn
+organizationalunit=akbarstorevpn
+commonname=akbarstorevpn
+email=akbarssh21@gmail.com
 
 # simple password minimal
 wget -O /etc/pam.d/common-password "https://${akbarvpn}/password"
@@ -201,6 +198,7 @@ rm -f /etc/default/sslh
 cat > /etc/default/sslh <<-END
 # Default options for sslh initscript
 # sourced by /etc/init.d/sslh
+
 # Disabled by default, to force yourself
 # to read the configuration:
 # - /usr/share/doc/sslh/README.Debian (quick start)
@@ -208,11 +206,15 @@ cat > /etc/default/sslh <<-END
 # - sslh(8) via "man sslh" for more configuration details.
 # Once configuration ready, you *must* set RUN to yes here
 # and try to start sslh (standalone mode only)
+
 RUN=yes
+
 # binary to use: forked (sslh) or single-thread (sslh-select) version
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
+
 DAEMON_OPTS="--user sslh --listen 0.0.0.0:443 --ssl 127.0.0.1:777 --ssh 127.0.0.1:109 --openvpn 127.0.0.1:1194 --http 127.0.0.1:8880 --pidfile /var/run/sslh/sslh.pid -n"
+
 END
 
 # Restart Service SSLH
@@ -256,22 +258,32 @@ chmod 644 /etc/stunnel5
 
 # Download Config Stunnel5
 cat > /etc/stunnel5/stunnel5.conf <<-END
-cert = /var/lib/datavpn/ssl-tls.crt
-key = /var/lib/datavpn/ssl-tls.key
+cert = /etc/xray/xray.crt
+key = /etc/xray/xray.key
 client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
+
 [dropbear]
 accept = 445
 connect = 127.0.0.1:109
+
 [openssh]
 accept = 777
 connect = 127.0.0.1:443
+
 [openvpn]
 accept = 990
 connect = 127.0.0.1:1194
+
 END
+
+# make a certificate
+#openssl genrsa -out key.pem 2048
+#openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
+#-subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
+#cat key.pem cert.pem >> /etc/stunnel5/stunnel5.pem
 
 # Service Stunnel5 systemctl restart stunnel5
 cat > /etc/systemd/system/stunnel5.service << END
@@ -280,9 +292,11 @@ Description=Stunnel5 Service
 Documentation=https://stunnel.org
 Documentation=https://github.com/Akbar218
 After=syslog.target network-online.target
+
 [Service]
 ExecStart=/usr/local/bin/stunnel5 /etc/stunnel5/stunnel5.conf
 Type=forking
+
 [Install]
 WantedBy=multi-user.target
 END
@@ -459,9 +473,8 @@ chmod +x addtrgo
 chmod +x deltrgo
 chmod +x renewtrgo
 chmod +x cektrgo
-echo "0 2 * * * reboot" >> /etc/crontab
+echo "0 5 * * * root clearlog && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
-echo "0 0 * * * root certws" >> /etc/crontab
 # remove unnecessary files
 cd
 apt autoclean -y
