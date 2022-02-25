@@ -18,22 +18,6 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
-# Link Hosting Kalian Untuk Ssh Vpn
-akbarvpn="raw.githubusercontent.com/senowahyu62/scriptvps/main/ssh"
-# Link Hosting Kalian Untuk Sstp
-akbarvpnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/sstp"
-# Link Hosting Kalian Untuk Ssr
-akbarvpnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/ssr"
-# Link Hosting Kalian Untuk Shadowsocks
-akbarvpnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/shadowsocks"
-# Link Hosting Kalian Untuk Wireguard
-akbarvpnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/wireguard"
-# Link Hosting Kalian Untuk Xray
-akbarvpnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/xray"
-# Link Hosting Kalian Untuk Ipsec
-akbarvpnnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/ipsec"
-# Link Hosting Kalian Untuk Backup
-akbarvpnnnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/backup"
 # Link Hosting Kalian Untuk Websocket
 akbarvpnnnnnnnnn="raw.githubusercontent.com/senowahyu62/scriptvps/main/websocket"
 # Link Hosting Kalian Untuk Ohp
@@ -55,20 +39,14 @@ wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ins-xray.
 #install ssh ovpn
 wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 # Websocket
-wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
+wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/websocket/edu.sh && chmod +x edu.sh && ./edu.sh
 # Ohp Server
-wget https://${akbarvpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/ohp/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 
-wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 
 rm -f /root/ssh-vpn.sh
-rm -f /root/sstp.sh
-rm -f /root/wg.sh
-rm -f /root/ss.sh
-rm -f /root/ssr.sh
-rm -f /root/ins-xray.sh
-rm -f /root/ipsec.sh
 rm -f /root/set-br.sh
 rm -f /root/edu.sh
 rm -f /root/ohp.sh
