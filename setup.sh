@@ -35,9 +35,9 @@ wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ins-xray.
 #install ssh ovpn
 wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 # Websocket
-wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/websocket/edu.sh && chmod +x edu.sh && ./edu.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/edu.sh && chmod +x edu.sh && ./edu.sh
 # Ohp Server
-wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/ohp/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://raw.githubusercontent.com/senowahyu62/sshws-only/main/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 
 wget https://raw.githubusercontent.com/senowahyu62/scriptvps/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
